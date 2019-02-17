@@ -1,0 +1,39 @@
+response.xpath('//div[@class="main"]/dl/dd')
+
+序号                  response.xpath('//div[@class="pic"]//em/text()').extract()
+电影名               response.xpath('//span[@class="title"][1]/text()').extract()
+评分                  response.xpath('//span[@class="rating_num"]/text()').extract()
+主题                  response.xpath('//span[@class="inq"]/text()').extract()
+
+
+商品号    spid   response.xpath('./@data-sku').extract_first() 
+详情页    url_x   --------
+商品名    name ------
+详情       xiangqing     response.xpath('//*[@id="p-ad"]/text()').extract_first()
+价格       jiage      response.xpath('/html/body/div[8]/div/div[2]/div[3]/div/div[1]/div[2]/span[1]/span[2]/text()').extract_first() 
+重量       zhongliang      response.xpath('//*[@id="summary-weight"]/div[2]/text()').extract_first()
+
+
+
+分析：1页60个商品。现在直接加载只能加载出30个。
+
+
+
+
+shell测试：scrapy shell -s USER_AGENT='Mozilla/5.0' https://search.jd.com/Search?keyword=iphone&enc=utf-8&wq=iphone
+运行爬虫：scrapy crawl iphone
+----------------------
+n= response.xpath('//*[@id="J_goodsList"]/ul/li')
+n.xpath('./div/div/a/em/text()[1]').extract_first() 
+n.xpath('./div/div/a/em/text()[2]').extract_first() 
+
+response.xpath('//*[@id="J_goodsList"]/ul/li[2]/div/div[4]/a/em/text()[2]').extract_first()
+//*[@id="summary-weight"]/div[2]
+
+//*[@id="J_goodsList"]/ul/li[2]/div/div[4]/a/em/text()[2]
+
+
+
+
+
+
